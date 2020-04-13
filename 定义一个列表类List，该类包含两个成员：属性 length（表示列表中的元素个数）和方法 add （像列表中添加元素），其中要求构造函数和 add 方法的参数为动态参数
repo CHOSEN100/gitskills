@@ -1,0 +1,14 @@
+function List(arrArg){
+this.arr = arrArg || [];
+this.arrlength = this.arr.length || 0;
+}
+
+List.prototype = {
+constructor: List,
+add: function(arg) {
+this.arr.push(arg);
+this.arrlength = this.arr.length;
+return this.arr;
+}
+
+}

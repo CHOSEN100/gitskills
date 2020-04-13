@@ -1,0 +1,41 @@
+newArr = [[3],[2],[{a:1},{a:1}],[1]]
+//将所有数值相同的放在数组中的同一个块内
+unique = [3,2,{a:1},1]
+//维护数值唯一
+et arr = [3, 2, {a: 1}, 1, {a: 1}, 1];
+
+function ana(arr) {
+    let newArr = [];
+    let unique = [];
+    for (let i of arr) {
+        i = JSON.stringify(i);
+        //如果已有数值相同的元素存在
+        if (unique.includes(i)) {
+            newArr[unique.indexOf(i)].push(i)
+        } else {
+            let arr = [];
+            arr.push(i);
+            unique.push(i);
+            newArr.push(arr)
+        }
+    }
+    return re(newArr)
+}
+
+function re(arr) {
+    let maxCount = 0;
+    let thisChar = [];
+    for (let i of arr) {
+        if (i.length >= maxCount) {
+            maxCount = i.length;
+        }
+    }
+    for (let i of arr) {
+        if (i.length === maxCount) {
+            thisChar.push(JSON.parse(i[0]));
+        }
+    }
+    return {maxCount, thisChar}
+}
+
+console.log(ana(arr)); //{ maxCount: 2, thisChar: [ { a: 1 }, 1 ] }
